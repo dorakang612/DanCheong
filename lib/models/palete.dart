@@ -1,25 +1,28 @@
+import 'package:dancheong/models/tag.dart';
+
 /// ### Palete
 ///
 /// Dancheong's Basic Data Structure.
 class Palete {
   /// Palete's name.
-  String name;
+  late String title;
 
-  /// Created Date
-  ///
   /// Palete will be distinguished by created Date.
   late DateTime createdDate;
 
+  List<Tag> tags = [];
+
+  var memo;
+
   Palete({
-    required this.name,
+    String? title,
+    DateTime? createdDate,
   }) {
-    // If the user doesn't set a name, the name is set to "Untitled".
-    if (name == "") {
-      name = "Untitled";
-    }
+    // If the user doesn't set a title, the title is set to "Untitled".
+    this.title = title ?? "Untitled";
 
     // Created Date must be now.
-    createdDate = DateTime.now();
+    this.createdDate = createdDate ?? DateTime.now();
   }
 
   /// Convert [Palete] to [String].
@@ -31,6 +34,6 @@ class Palete {
   /// Make [Palete] from [String] source.
   factory Palete.fromString(String src) {
     String name = "Untitled";
-    return Palete(name: name);
+    return Palete(title: name);
   }
 }
